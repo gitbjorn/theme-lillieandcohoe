@@ -1,6 +1,7 @@
 
 
 {% liquid
+  assign hero_image_1 = section.settings.image_1 | default: section.settings.image_1_product.featured_image
   assign media_count = 0
   assign media_count_mobile = 0
   assign fallback_to_desktop = false
@@ -14,8 +15,8 @@
   # Desktop media checks
   # For each media slot, check if the media is not blank and the media type matches the slot
   # Need to check both (1) media picker is not blank AND (2) section.setting.media_type because user can toggle between different media types to display, but choosing "Image" doesn't clear a saved "Video" in the theme editor.
-  # The alternate setting (section.settings.image_1 when "Video" is selected) is only visually hidden in theme editor.
-  if section.settings.image_1 != blank and section.settings.media_type_1 == 'image'
+  # The alternate setting (hero_image_1 when "Video" is selected) is only visually hidden in theme editor.
+  if hero_image_1 != blank and section.settings.media_type_1 == 'image'
     assign media_1 = 'image'
     assign media_count = media_count | plus: 1
   endif
@@ -133,13 +134,13 @@
         height="{{ section.settings.image_1_mobile.height }}"
       >
       {{
-        section.settings.image_1
+        hero_image_1
         | image_url: width: 3840
         | image_tag:
-          width: section.settings.image_1.width,
+          width: hero_image_1.width,
           widths: widths,
-          height: section.settings.image_1.height,
-          alt: section.settings.image_1.alt,
+          height: hero_image_1.height,
+          alt: hero_image_1.alt,
           class: 'hero__media',
           sizes: sizes,
           fetchpriority: fetch_priority,
@@ -149,13 +150,13 @@
   {%- elsif media_1 == 'image' -%}
     <div class="{{ media_wrapper_desktop_class }}">
       {{
-        section.settings.image_1
+        hero_image_1
         | image_url: width: 3840
         | image_tag:
-          width: section.settings.image_1.width,
+          width: hero_image_1.width,
           widths: widths,
-          height: section.settings.image_1.height,
-          alt: section.settings.image_1.alt,
+          height: hero_image_1.height,
+          alt: hero_image_1.alt,
           class: 'hero__media',
           sizes: sizes,
           fetchpriority: fetch_priority,
@@ -334,12 +335,12 @@
 {% capture media_blurred %}
   {% if media_1 == 'image' %}
     {{
-      section.settings.image_1
+      hero_image_1
       | image_url: width: 3840
       | image_tag:
-        width: section.settings.image_1.width,
+        width: hero_image_1.width,
         widths: widths,
-        height: section.settings.image_1.height,
+        height: hero_image_1.height,
         alt: '',
         class: 'hero__media',
         sizes: sizes
@@ -432,11 +433,11 @@
               sizes: sizes
             }}
         {% elsif media_1 == 'image' %}
-          {{ section.settings.image_1
+          {{ hero_image_1
             | image_url: width: 1600
-            | image_tag: width: section.settings.image_1.width,
+            | image_tag: width: hero_image_1.width,
               widths: widths,
-              height: section.settings.image_1.height,
+              height: hero_image_1.height,
               alt: '',
               class: 'hero__media',
               sizes: sizes
@@ -525,7 +526,7 @@
     {%- endif -%}
     <div
       class="hero__media-grid"
-      style="--hero-media-count: {{ media_count }};--hero-media-count-mobile: {{ media_count_mobile }};{%- if section.settings.image_1 != blank -%} --hero-media-aspect-ratio: {{ section.settings.image_1.aspect_ratio }};{% endif %}"
+      style="--hero-media-count: {{ media_count }};--hero-media-count-mobile: {{ media_count_mobile }};{%- if hero_image_1 != blank -%} --hero-media-aspect-ratio: {{ hero_image_1.aspect_ratio }};{% endif %}"
       data-testid="hero-media-wrapper"
     >
       {% liquid
@@ -830,6 +831,11 @@
       "id": "image_1",
       "label": "t:settings.image",
       "visible_if": "{{ section.settings.media_type_1 == 'image' }}"
+    },
+    {
+      "type": "product",
+      "id": "image_1_product",
+      "label": "t:settings.product"
     },
     {
       "type": "video",

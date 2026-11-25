@@ -17,14 +17,14 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "📍 Unit 103-9188 Glover Road, Fort Langley, BC V1M 2S3. &nbsp; &nbsp; &nbsp; &nbsp; ☎ LOCAL: 250.352.6398 TOLL FREE: 800.603.5882",
-            "link": "",
-            "font": "var(--font-heading--family)",
+            "text": "Fall & Winter Collection  |  Handcrafted in Canada",
+            "link": "shopify://collections/women-fall-winter-hats",
+            "font": "var(--font-body--family)",
             "font_size": "0.75rem",
             "weight": "",
             "letter_spacing": "normal",
             "case": "none",
-            "text_color": ""
+            "text_color": "#ffffff"
           },
           "blocks": {}
         }
@@ -36,11 +36,11 @@
       "settings": {
         "speed": 5,
         "section_width": "full-width",
-        "background_color": "#C9C9C9",
-        "divider_width": 1,
+        "background_color": "#5b544b",
+        "divider_width": 0,
         "divider_color": "{{ settings.color_palette.color2 }}",
-        "padding-block-start": 15,
-        "padding-block-end": 15
+        "padding-block-start": 9,
+        "padding-block-end": 9
       }
     },
     "header_section": {
@@ -67,7 +67,7 @@
             "menu_font_style": "inverse",
             "type_font_primary_link": "body",
             "type_case_primary_link": "none",
-            "menu_style": "featured_products",
+            "menu_style": "text",
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
             "image_border_radius": 0,
@@ -83,9 +83,9 @@
         }
       },
       "settings": {
-        "logo_position": "left",
+        "logo_position": "center",
         "menu_position": "left",
-        "menu_row": "top",
+        "menu_row": "bottom",
         "customer_account_menu": "customer-account-main-menu",
         "show_search": true,
         "search_position": "right",
@@ -98,11 +98,11 @@
         "localization_position": "right",
         "localization_row": "top",
         "section_width": "page-width",
-        "section_height": "standard",
+        "section_height": "compact",
         "enable_sticky_header": "always",
-        "divider_width": 0,
+        "divider_width": 1,
         "divider_size": "page-width",
-        "divider_color": "",
+        "divider_color": "#ded7cd",
         "border_width": 0,
         "bottom_border_color": "",
         "actions_display_style": "icon",

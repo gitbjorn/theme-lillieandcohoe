@@ -2,6 +2,7 @@
 
 {% liquid
   assign block_settings = block.settings
+  assign block_image = block_settings.image | default: block_settings.image_product.featured_image
   assign ratio = 1
 
   case block_settings.image_ratio
@@ -10,7 +11,7 @@
     when 'portrait'
       assign ratio = '4 / 5'
     when 'adapt'
-      assign ratio = block_settings.image.aspect_ratio
+      assign ratio = block_image.aspect_ratio
   endcase
 
   if ratio == 0 or ratio == null
@@ -41,14 +42,14 @@
 %}
 
 {% capture image %}
-  {%- if block_settings.image -%}
+  {%- if block_image -%}
     {{
-      block_settings.image
+      block_image
       | image_url: width: 3840
       | image_tag:
-        width: block_settings.image.width,
+        width: block_image.width,
         widths: widths,
-        height: block_settings.image.height,
+        height: block_image.height,
         class: 'image-block__image border-style',
         style: image_border_style,
         sizes: sizes
@@ -125,6 +126,11 @@
       "type": "image_picker",
       "id": "image",
       "label": "t:settings.image"
+    },
+    {
+      "type": "product",
+      "id": "image_product",
+      "label": "t:settings.product"
     },
     {
       "type": "url",

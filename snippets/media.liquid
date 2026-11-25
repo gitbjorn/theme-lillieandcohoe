@@ -7,6 +7,7 @@
 
 {% liquid
   assign block_settings = block.settings
+  assign media_image = block_settings.image | default: block_settings.image_product.featured_image
   assign show_image = false
   assign show_video = false
 
@@ -42,9 +43,9 @@
 >
   {%- if show_image -%}
     {% capture image_tag %}
-      {% if block_settings.image != blank %}
+      {% if media_image != blank %}
         {% render 'image',
-          image: block_settings.image,
+          image: media_image,
           class: 'media-block__media border-style',
           unset_image_tag: unset_image_tag
         %}
