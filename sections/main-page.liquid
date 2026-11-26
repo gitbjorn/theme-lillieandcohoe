@@ -1,3 +1,6 @@
+{% if page.handle == 'where-to-buy' %}
+  {% render 'retailer-directory', directory_id: section.id %}
+{% else %}
 
 
 {% liquid
@@ -26,6 +29,8 @@
     {% content_for 'blocks' %}
   </div>
 </div>
+
+{% endif %}
 
 {% schema %}
 {

@@ -8,6 +8,26 @@
  * ------------------------------------------------------------
  */
 {
+  "retailer_directory": {
+    "eyebrow": "Find your next favourite hat",
+    "intro": "Explore our stockists in Canada, the United States, and online.",
+    "note": "Styles and availability vary by store. Please contact the retailer before visiting.",
+    "search_label": "Search retailers",
+    "search_placeholder": "Store name, city, province or state",
+    "browse": "Browse retailers",
+    "all": "All retailers",
+    "canada": "Canada",
+    "usa": "USA",
+    "online": "Online stores",
+    "website": "Website",
+    "email": "Email",
+    "contact": "Contact",
+    "social": "Facebook",
+    "count": "Retailer listings: {{ count }}",
+    "clear": "Clear filters",
+    "empty_title": "No retailers found",
+    "empty_body": "Try another city or store name, or clear your filters to see all retailers."
+  },
   "blocks": {
     "load_video": "載入影片：{{ description }}",
     "sold_out": "售罄",

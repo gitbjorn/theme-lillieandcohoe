@@ -1,0 +1,78 @@
+{% doc %}
+  Renders one merchant-owned Retailer metaobject for the searchable directory.
+  @param {metaobject} retailer - An active retailer entry.
+  @example
+  {% render 'retailer-card', retailer: retailer %}
+{% enddoc %}
+
+{% liquid
+  assign store_name = retailer.store_name.value
+  assign country = retailer.country.value
+  assign region = retailer.region.value
+  assign phone = retailer.phone.value
+  assign phone_link = phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')'
+  assign online_url = retailer.online_url.value
+  assign website = retailer.website.value
+  assign facebook = retailer.facebook.value
+  assign online_facebook = retailer.online_facebook.value
+%}
+
+<li
+  class="retailer-directory__card"
+  data-country="{{ country | escape }}"
+  data-region="{{ region | escape }}"
+  data-online="{{ retailer.online_store.value }}"
+  data-physical="{{ retailer.physical_store.value }}"
+>
+  <p class="retailer-directory__location">
+    {% if country == 'CA' %}
+      {{ 'retailer_directory.canada' | t }}
+    {% elsif country == 'US' %}
+      {{ 'retailer_directory.usa' | t }}
+    {% else %}
+      {{ country | escape }}
+    {% endif %}
+    {% if region != blank %} · {{ region | escape }}{% endif %}
+    {% if retailer.online_store.value %} · {{ 'retailer_directory.online' | t }}{% endif %}
+  </p>
+  <h2 class="retailer-directory__name">{{ store_name | escape }}</h2>
+  <p class="retailer-directory__address">
+    {% if retailer.address.value != blank %}{{ retailer.address.value | escape }}<br>{% endif %}
+    {{ retailer.city.value | escape }}
+  </p>
+  {% if phone != blank %}
+    <a href="tel:{{ phone_link | escape }}">{{ phone | escape }}</a>
+  {% endif %}
+  <div class="retailer-directory__links">
+    {% if retailer.email.value != blank %}
+      <a href="mailto:{{ retailer.email.value | escape }}" aria-label="{{ 'retailer_directory.email' | t | escape }}: {{ store_name | escape }}">
+        {{ 'retailer_directory.email' | t }}
+      </a>
+    {% endif %}
+    {% if retailer.contact_url.value != blank %}
+      <a target="_blank" rel="noopener noreferrer" href="{{ retailer.contact_url.value | escape }}" aria-label="{{ 'retailer_directory.contact' | t | escape }}: {{ store_name | escape }}">
+        {{ 'retailer_directory.contact' | t }}
+      </a>
+    {% endif %}
+    {% if website != blank %}
+      <a target="_blank" rel="noopener noreferrer" href="{{ website | escape }}" aria-label="{{ 'retailer_directory.website' | t | escape }}: {{ store_name | escape }}">
+        {{ 'retailer_directory.website' | t }}
+      </a>
+    {% endif %}
+    {% if online_url != blank and online_url != website %}
+      <a target="_blank" rel="noopener noreferrer" href="{{ online_url | escape }}" aria-label="{{ 'retailer_directory.online' | t | escape }}: {{ store_name | escape }}">
+        {{ 'retailer_directory.online' | t }}
+      </a>
+    {% endif %}
+    {% if facebook != blank %}
+      <a target="_blank" rel="noopener noreferrer" href="{{ facebook | escape }}" aria-label="{{ 'retailer_directory.social' | t | escape }}: {{ store_name | escape }}">
+        {{ 'retailer_directory.social' | t }}
+      </a>
+    {% endif %}
+    {% if online_facebook != blank and online_facebook != facebook %}
+      <a target="_blank" rel="noopener noreferrer" href="{{ online_facebook | escape }}" aria-label="{{ 'retailer_directory.online' | t | escape }} — {{ 'retailer_directory.social' | t | escape }}: {{ store_name | escape }}">
+        {{ 'retailer_directory.online' | t }} — {{ 'retailer_directory.social' | t }}
+      </a>
+    {% endif %}
+  </div>
+</li>

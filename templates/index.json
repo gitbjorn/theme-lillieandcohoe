@@ -945,7 +945,7 @@
     "featured_styles": {
       "name": "Featured Styles",
       "settings": {
-        "collection": "featured",
+        "collection": "women-fall-winter-hats",
         "max_products": 4,
         "layout_type": "grid",
         "carousel_on_mobile": false,
@@ -1347,7 +1347,7 @@
                 "padding-inline-start": 0,
                 "padding-inline-end": 0,
                 "link": "shopify://collections/women-spring-summer-hats",
-                "image_product": "lake-country-pamela"
+                "image_product": "lake-country-bridget"
               }
             },
             "heading": {
@@ -1470,7 +1470,7 @@
                 "padding-inline-start": 0,
                 "padding-inline-end": 0,
                 "link": "shopify://collections/women-fall-winter-hats",
-                "image_product": "lake-country-pamela"
+                "image_product": "black-tan-tam"
               }
             },
             "heading": {
@@ -1593,7 +1593,7 @@
                 "padding-inline-start": 0,
                 "padding-inline-end": 0,
                 "link": "shopify://collections/all",
-                "image_product": "lake-country-pamela"
+                "image_product": "cap-collection-penny-linen"
               }
             },
             "heading": {
